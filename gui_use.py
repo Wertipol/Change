@@ -5,28 +5,26 @@ win.title('Сдача')
 win.geometry('800x600')
 win.resizable(True, False)
 
-dif = 0
-fin_dif = []
-money = [5000, 2000, 1000, 500, 200, 100, 50, 10, 5, 2, 1]
+coins = [5000, 2000, 1000, 500, 200, 100, 50, 10, 5, 2, 1]
 
 def fun():
-    fin_dif = []
-    user = int(user_money.get())
-    product = int(products_money.get())
-    dif =  product - user #хз почему так
-    txt3.configure(text= f'Ваша сдача должна быть: {dif}')
+    changeCoins = []
+    user = int(userMoney.get())
+    product = int(productsMoney.get())
+    value =  product - user #хз почему так
+    txt3.configure(text= f'Ваша сдача должна быть: {value}')
 
-    while dif > 0:
-        for i in range(len(money)):
-            while dif >= money[i]:
-                dif -= money[i]
-                fin_dif.append(money[i])
+    while value > 0:
+        for i in range(len(coins)):
+            while value >= coins[i]:
+                value -= coins[i]
+                changeCoins.append(coins[i])
 
-    txt4.configure(text= f'По наличным это: {fin_dif}')
+    txt4.configure(text= f'По наличным это: {changeCoins}')
 
 def null():
-    user_money.delete(0, END)
-    products_money.delete(0, END)
+    userMoney.delete(0, END)
+    productsMoney.delete(0, END)
     txt3.configure(text='Ваша сдача должна быть:')
     txt4.configure(text='По наличным это:')
 
@@ -36,11 +34,11 @@ txt1.place(x=40, y=50)
 txt2 = Label(win, text='Сколько вы отдали денег:', font='Calibri 20')
 txt2.place(x=10, y=150)
 
-user_money = Entry(win, font='Calibri 30')
-user_money.place(x=330, y=50)
+userMoney = Entry(win, font='Calibri 30')
+userMoney.place(x=330, y=50)
 
-products_money = Entry(win, font='Calibri 30')
-products_money.place(x=330, y=150)
+productsMoney = Entry(win, font='Calibri 30')
+productsMoney.place(x=330, y=150)
 
 btn = Button(win, text='Расчитать', font='Calibri 20', command=fun)
 btn.place(x=400, y=230)
